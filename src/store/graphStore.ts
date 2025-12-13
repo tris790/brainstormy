@@ -43,6 +43,7 @@ interface GraphStore {
     colorIndex: number;
     editingNodeId: string | null;
     inputBarFocusFn: (() => void) | null;
+    inputBarToggleModeFn: (() => void) | null;
     fitViewFn: (() => void) | null;
 
     // History state
@@ -64,6 +65,8 @@ interface GraphStore {
     setEditingNodeId: (id: string | null) => void;
     setInputBarFocusFn: (fn: (() => void) | null) => void;
     focusInputBar: () => void;
+    setInputBarToggleModeFn: (fn: (() => void) | null) => void;
+    toggleInputBarMode: () => void;
     setFitViewFn: (fn: (() => void) | null) => void;
     centerOnRootAndFocus: () => void;
 
@@ -123,6 +126,7 @@ export const useGraphStore = create<GraphStore>()(
             colorIndex: 0,
             editingNodeId: null,
             inputBarFocusFn: null,
+            inputBarToggleModeFn: null,
             fitViewFn: null,
 
             // History state - initialized with initial state
@@ -168,6 +172,13 @@ export const useGraphStore = create<GraphStore>()(
                 const { inputBarFocusFn } = get();
                 if (inputBarFocusFn) {
                     inputBarFocusFn();
+                }
+            },
+            setInputBarToggleModeFn: (fn) => set({ inputBarToggleModeFn: fn }),
+            toggleInputBarMode: () => {
+                const { inputBarToggleModeFn } = get();
+                if (inputBarToggleModeFn) {
+                    inputBarToggleModeFn();
                 }
             },
             setFitViewFn: (fn) => set({ fitViewFn: fn }),

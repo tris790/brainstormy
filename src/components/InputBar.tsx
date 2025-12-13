@@ -11,10 +11,14 @@ export default function InputBar() {
   const [mode, setMode] = useState<'auto' | 'manual'>('auto');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { addNode, addNodeToSelected, isProcessing, selectedNodeId, nodes, setInputBarFocusFn } = useGraphStore();
+  const { addNode, addNodeToSelected, isProcessing, selectedNodeId, nodes, setInputBarFocusFn, setInputBarToggleModeFn } = useGraphStore();
   const { embeddingProvider, isModelReady, isModelLoading, setSettingsOpen } = useSettingsStore();
 
   const selectedNode = nodes.find(n => n.id === selectedNodeId);
+
+  const toggleMode = () => {
+    setMode(m => m === 'auto' ? 'manual' : 'auto');
+  };
 
   useEffect(() => {
     // Register focus function with store
@@ -23,13 +27,17 @@ export default function InputBar() {
     };
     setInputBarFocusFn(focusFn);
 
+    // Register toggle mode function with store
+    setInputBarToggleModeFn(toggleMode);
+
     // Focus input on mount
     inputRef.current?.focus();
 
     return () => {
       setInputBarFocusFn(null);
+      setInputBarToggleModeFn(null);
     };
-  }, [setInputBarFocusFn]);
+  }, [setInputBarFocusFn, setInputBarToggleModeFn]);
 
   const handleSubmit = async (e: React.KeyboardEvent) => {
     if (matchesKeybind(e.nativeEvent, KEYBINDS.ENTER) && input.trim() && !isProcessing) {
@@ -45,10 +53,6 @@ export default function InputBar() {
       // Refocus input
       inputRef.current?.focus();
     }
-  };
-
-  const toggleMode = () => {
-    setMode(m => m === 'auto' ? 'manual' : 'auto');
   };
 
   return (

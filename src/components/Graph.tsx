@@ -126,6 +126,28 @@ export default function Graph() {
         return;
       }
 
+      // Toggle input mode with Tab
+      // If we're typing in input, let the InputBar handle it (for consistency)
+      // If we're not typing, toggle mode here and prevent Tab from switching focus
+      if (matchesKeybind(e, KEYBINDS.TOGGLE_MODE)) {
+        if (!isTypingInInput()) {
+          e.preventDefault();
+          useGraphStore.getState().toggleInputBarMode();
+          return;
+        }
+        // If typing in input, let InputBar's onKeyDown handle it
+        return;
+      }
+
+      // Focus input bar with Escape
+      if (matchesKeybind(e, KEYBINDS.ESCAPE)) {
+        if (!isTypingInInput()) {
+          e.preventDefault();
+          useGraphStore.getState().focusInputBar();
+          return;
+        }
+      }
+
       // Skip if typing in input
       if (isTypingInInput()) {
         return;
