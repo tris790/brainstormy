@@ -178,12 +178,7 @@ export const useProjectStore = create<ProjectStore>()(
       deleteProject: (id: string) => {
         const { projects, activeProjectId } = get();
 
-        // Prevent deletion of last project
-        if (Object.keys(projects).length === 1) {
-          throw new Error('Cannot delete the last project');
-        }
-
-        // If deleting active project, switch to another one
+        // If deleting active project, switch to another one or create a new one
         if (id === activeProjectId) {
           const remainingIds = Object.keys(projects).filter((k) => k !== id);
 
@@ -194,6 +189,9 @@ export const useProjectStore = create<ProjectStore>()(
 
           if (sortedIds.length > 0) {
             get().switchProject(sortedIds[0]);
+          } else {
+            // If this is the last project, we'll create a new one after deletion
+            set({ activeProjectId: null });
           }
         }
 
@@ -201,6 +199,12 @@ export const useProjectStore = create<ProjectStore>()(
         const newProjects = { ...projects };
         delete newProjects[id];
         set({ projects: newProjects });
+
+        // If no projects remain, create a new default project
+        if (Object.keys(newProjects).length === 0) {
+          const newProjectId = get().createProject('My First Brainstorm');
+          get().switchProject(newProjectId);
+        }
       },
 
       // Switch to a different project
