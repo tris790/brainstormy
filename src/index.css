@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* React Flow customizations */
+.react-flow__node {
+  cursor: pointer;
+}
+
+.react-flow__node.selected {
+  z-index: 10 !important;
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.react-flow__controls {
+  box-shadow: none !important;
+}
+
+.react-flow__minimap {
+  box-shadow: none !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(99, 110, 241, 0.3);
+}
+
+/* Input focus states */
+input:focus {
+  outline: none;
+}
+
+/* Keyboard focus visible */
+:focus-visible {
+  outline: 2px solid rgba(99, 110, 241, 0.5);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Command palette animations */
+[cmdk-root] {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[cmdk-input] {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[cmdk-item] {
+  transition: background-color 0.1s ease;
+}
+
+[cmdk-group-heading] {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 12px 4px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Monospace font for code elements */
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
