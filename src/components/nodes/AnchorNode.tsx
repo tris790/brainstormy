@@ -94,13 +94,13 @@ function AnchorNode({ data, id, selected }: AnchorNodeProps) {
           />
           <button
             onClick={handleSave}
-            className="p-1 hover:bg-white/20 rounded transition-colors"
+            className="p-1 hover:bg-white/20 rounded transition-colors cursor-pointer"
           >
             <Check size={14} className="text-green-400" />
           </button>
           <button
             onClick={handleCancel}
-            className="p-1 hover:bg-white/20 rounded transition-colors"
+            className="p-1 hover:bg-white/20 rounded transition-colors cursor-pointer"
           >
             <X size={14} className="text-red-400" />
           </button>
@@ -116,14 +116,14 @@ function AnchorNode({ data, id, selected }: AnchorNodeProps) {
         <div className="absolute -top-2 -right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={() => setEditingNodeId(id)}
-            className="p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors backdrop-blur-sm"
+            className="p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors backdrop-blur-sm cursor-pointer"
           >
             <Edit2 size={12} className="text-white" />
           </button>
           {id !== 'root' && (
             <button
               onClick={() => deleteNode(id)}
-              className="p-1.5 bg-red-500/30 hover:bg-red-500/50 rounded-full transition-colors backdrop-blur-sm"
+              className="p-1.5 bg-red-500/30 hover:bg-red-500/50 rounded-full transition-colors backdrop-blur-sm cursor-pointer"
             >
               <Trash2 size={12} className="text-red-300" />
             </button>

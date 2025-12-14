@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { pipeline, type FeatureExtractionPipeline } from '@xenova/transformers';
+import { pipeline, type FeatureExtractionPipeline } from '@huggingface/transformers';
 import type { BrainstormNode, BrainstormEdge } from '../types';
 import { findParentForNewNode, cosineSimilarity } from './semantic';
 

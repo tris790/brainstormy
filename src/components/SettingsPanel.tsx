@@ -119,7 +119,7 @@ export default function SettingsPanel() {
       {/* Settings Button */}
       <button
         onClick={() => setSettingsOpen(true)}
-        className="fixed top-4 right-4 z-40 p-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-white/10 transition-colors group"
+        className="fixed top-4 right-4 z-40 p-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-white/10 transition-colors group cursor-pointer"
         title={`${KEYBINDS.SETTINGS.description} (${KEYBINDS.SETTINGS.displayText})`}
       >
         <Settings size={18} className="text-white/60 group-hover:text-white transition-colors" />
@@ -154,7 +154,7 @@ export default function SettingsPanel() {
                 </h2>
                 <button
                   onClick={() => setSettingsOpen(false)}
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
                 >
                   <X size={18} className="text-white/60" />
                 </button>
@@ -171,7 +171,7 @@ export default function SettingsPanel() {
                     {/* Server Option */}
                     <button
                       onClick={() => handleProviderChange('server')}
-                      className={`w-full p-4 rounded-xl border transition-all text-left ${
+                      className={`w-full p-4 rounded-xl border transition-all text-left cursor-pointer ${
                         embeddingProvider === 'server'
                           ? 'bg-storm-600/20 border-storm-500/50'
                           : 'bg-white/5 border-white/10 hover:bg-white/10'
@@ -202,7 +202,7 @@ export default function SettingsPanel() {
                     {/* Local Option */}
                     <button
                       onClick={() => handleProviderChange('local')}
-                      className={`w-full p-4 rounded-xl border transition-all text-left ${
+                      className={`w-full p-4 rounded-xl border transition-all text-left cursor-pointer ${
                         embeddingProvider === 'local'
                           ? 'bg-emerald-600/20 border-emerald-500/50'
                           : 'bg-white/5 border-white/10 hover:bg-white/10'
@@ -255,7 +255,7 @@ export default function SettingsPanel() {
                               isSelected
                                 ? 'bg-white/10 border-white/30'
                                 : 'bg-white/5 border-white/10 hover:bg-white/10'
-                            } ${isModelLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                            } ${isModelLoading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
                           >
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex-1">
@@ -309,7 +309,7 @@ export default function SettingsPanel() {
                     {isModelReady && (
                       <button
                         onClick={handleUnloadModel}
-                        className="mt-3 w-full p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm hover:bg-red-500/20 transition-colors flex items-center justify-center gap-2"
+                        className="mt-3 w-full p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm hover:bg-red-500/20 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                       >
                         <Trash2 size={16} />
                         Unload Model (Free Memory)

@@ -345,7 +345,7 @@ export default function CommandPalette() {
                 />
                 <button
                   onClick={() => setCommandPaletteOpen(false)}
-                  className="p-1 hover:bg-white/10 rounded transition-colors"
+                  className="p-1 hover:bg-white/10 rounded transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4 text-white/40" />
                 </button>

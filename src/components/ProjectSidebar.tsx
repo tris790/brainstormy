@@ -46,7 +46,7 @@ export default function ProjectSidebar() {
           </h2>
           <button
             onClick={toggleSidebar}
-            className="p-1 hover:bg-white/10 rounded transition-colors"
+            className="p-1 hover:bg-white/10 rounded transition-colors cursor-pointer"
             aria-label="Close sidebar"
           >
             <ChevronLeft className="w-4 h-4 text-white/40" />
@@ -57,7 +57,7 @@ export default function ProjectSidebar() {
         <div className="p-3 shrink-0">
           <button
             onClick={handleNewProject}
-            className="w-full px-4 py-2 bg-storm-600/20 border border-storm-500/50 rounded-lg text-sm text-white hover:bg-storm-600/30 transition-colors flex items-center justify-center gap-2"
+            className="w-full px-4 py-2 bg-storm-600/20 border border-storm-500/50 rounded-lg text-sm text-white hover:bg-storm-600/30 transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             New Project
@@ -94,7 +94,7 @@ export default function ProjectSidebar() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           onClick={toggleSidebar}
-          className="fixed left-4 top-4 z-40 p-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-white/10 transition-colors"
+          className="fixed left-4 top-4 z-40 p-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
           aria-label="Open sidebar"
         >
           <ChevronRight className="w-4 h-4 text-white/60" />

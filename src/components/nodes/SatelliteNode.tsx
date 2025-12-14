@@ -83,13 +83,13 @@ function SatelliteNode({ data, id, selected }: SatelliteNodeProps) {
           />
           <button
             onClick={handleSave}
-            className="p-1 hover:bg-white/20 rounded transition-colors"
+            className="p-1 hover:bg-white/20 rounded transition-colors cursor-pointer"
           >
             <Check size={12} className="text-green-400" />
           </button>
           <button
             onClick={handleCancel}
-            className="p-1 hover:bg-white/20 rounded transition-colors"
+            className="p-1 hover:bg-white/20 rounded transition-colors cursor-pointer"
           >
             <X size={12} className="text-red-400" />
           </button>
@@ -105,13 +105,13 @@ function SatelliteNode({ data, id, selected }: SatelliteNodeProps) {
         <div className="absolute -top-1.5 -right-1.5 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={() => setEditingNodeId(id)}
-            className="p-1 bg-white/20 hover:bg-white/30 rounded-full transition-colors backdrop-blur-sm"
+            className="p-1 bg-white/20 hover:bg-white/30 rounded-full transition-colors backdrop-blur-sm cursor-pointer"
           >
             <Edit2 size={10} className="text-white" />
           </button>
           <button
             onClick={() => deleteNode(id)}
-            className="p-1 bg-red-500/30 hover:bg-red-500/50 rounded-full transition-colors backdrop-blur-sm"
+            className="p-1 bg-red-500/30 hover:bg-red-500/50 rounded-full transition-colors backdrop-blur-sm cursor-pointer"
           >
             <Trash2 size={10} className="text-red-300" />
           </button>

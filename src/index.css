@@ -1,6 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Custom storm color palette */
+  --color-storm-50: #f0f4ff;
+  --color-storm-100: #e0e9ff;
+  --color-storm-200: #c7d6fe;
+  --color-storm-300: #a5bafc;
+  --color-storm-400: #8194f8;
+  --color-storm-500: #636ef1;
+  --color-storm-600: #4f4de5;
+  --color-storm-700: #423dca;
+  --color-storm-800: #3734a3;
+  --color-storm-900: #323281;
+  --color-storm-950: #1e1c4b;
+
+  /* Custom animations */
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(99, 110, 241, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(99, 110, 241, 0.8); }
+}
 
 :root {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;

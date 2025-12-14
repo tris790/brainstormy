@@ -145,7 +145,7 @@ export default function ProjectModal() {
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-full aspect-square rounded-lg transition-all ${
+                      className={`w-full aspect-square rounded-lg transition-all cursor-pointer ${
                         selectedColor === color
                           ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110'
                           : 'hover:scale-105'
@@ -182,7 +182,7 @@ export default function ProjectModal() {
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-full aspect-square rounded-lg transition-all ${
+                      className={`w-full aspect-square rounded-lg transition-all cursor-pointer ${
                         selectedColor === color
                           ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-900 scale-110'
                           : 'hover:scale-105'
@@ -279,7 +279,7 @@ export default function ProjectModal() {
                 <h3 className="text-lg font-semibold text-white">{modalContent.title}</h3>
                 <button
                   onClick={handleClose}
-                  className="p-1 hover:bg-white/10 rounded transition-colors"
+                  className="p-1 hover:bg-white/10 rounded transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4 text-white/40" />
                 </button>
@@ -292,13 +292,13 @@ export default function ProjectModal() {
               <div className="flex items-center justify-end gap-3 p-4 border-t border-white/10">
                 <button
                   onClick={handleClose}
-                  className="px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleConfirm}
-                  className={`px-4 py-2 text-sm text-white rounded-lg transition-colors ${modalContent.confirmClass}`}
+                  className={`px-4 py-2 text-sm text-white rounded-lg transition-colors cursor-pointer ${modalContent.confirmClass}`}
                 >
                   {modalContent.confirmText}
                 </button>

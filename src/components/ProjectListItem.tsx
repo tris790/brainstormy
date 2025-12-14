@@ -203,7 +203,7 @@ export default function ProjectListItem({ project }: ProjectListItemProps) {
               e.stopPropagation();
               setIsMenuOpen(!isMenuOpen);
             }}
-            className="opacity-0 group-hover:opacity-100 p-1 hover:bg-white/10 rounded transition-opacity shrink-0"
+            className="opacity-0 group-hover:opacity-100 p-1 hover:bg-white/10 rounded transition-opacity shrink-0 cursor-pointer"
           >
             <MoreVertical className="w-4 h-4 text-white/60" />
           </button>
@@ -223,21 +223,21 @@ export default function ProjectListItem({ project }: ProjectListItemProps) {
           >
             <button
               onClick={() => handleMenuAction('rename')}
-              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3"
+              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3 cursor-pointer"
             >
               <Edit2 className="w-4 h-4" />
               Rename
             </button>
             <button
               onClick={() => handleMenuAction('color')}
-              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3"
+              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3 cursor-pointer"
             >
               <Palette className="w-4 h-4" />
               Change color
             </button>
             <button
               onClick={() => handleMenuAction('export')}
-              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3"
+              className="w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 flex items-center gap-3 cursor-pointer"
             >
               <Download className="w-4 h-4" />
               Export project
@@ -245,7 +245,7 @@ export default function ProjectListItem({ project }: ProjectListItemProps) {
             <div className="border-t border-white/10 my-1" />
             <button
               onClick={() => handleMenuAction('delete')}
-              className="w-full px-4 py-2 text-left text-sm text-red-400 hover:bg-red-500/10 flex items-center gap-3"
+              className="w-full px-4 py-2 text-left text-sm text-red-400 hover:bg-red-500/10 flex items-center gap-3 cursor-pointer"
             >
               <Trash2 className="w-4 h-4" />
               Delete

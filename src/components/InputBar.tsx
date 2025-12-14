@@ -72,7 +72,7 @@ export default function InputBar() {
         <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
           <button
             onClick={toggleMode}
-            className={`flex items-center gap-2 text-xs font-mono uppercase tracking-wider transition-colors ${
+            className={`flex items-center gap-2 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
               mode === 'auto'
                 ? 'text-storm-400'
                 : 'text-amber-400'
@@ -94,7 +94,7 @@ export default function InputBar() {
           {/* Embedding provider indicator */}
           <button
             onClick={() => setSettingsOpen(true)}
-            className={`flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider transition-colors hover:opacity-80 ${
+            className={`flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider transition-colors hover:opacity-80 cursor-pointer ${
               embeddingProvider === 'local' ? 'text-emerald-400' : 'text-white/40'
             }`}
             title="Click to change embedding provider"

@@ -1,8 +1,9 @@
-import { pipeline, env, type FeatureExtractionPipeline } from '@xenova/transformers';
+import { pipeline, env, type FeatureExtractionPipeline } from '@huggingface/transformers';
 
-// Configure transformers.js to use browser cache
+// Configure transformers.js for browser environment
 env.allowLocalModels = false;
 env.useBrowserCache = true;
+env.backends.onnx.wasm.numThreads = 1; // Use single thread for better compatibility
 
 // Available models for local embeddings
 export const LOCAL_MODELS = {
