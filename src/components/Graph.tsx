@@ -129,6 +129,15 @@ export default function Graph() {
       // Toggle input mode with Tab
       // If we're typing in input, let the InputBar handle it (for consistency)
       // If we're not typing, toggle mode here and prevent Tab from switching focus
+      if (matchesKeybind(e, KEYBINDS.SWITCH_TO_AUTO)) {
+        if (!isTypingInInput()) {
+          e.preventDefault();
+          useGraphStore.getState().switchToAutoMode();
+          return;
+        }
+        return;
+      }
+
       if (matchesKeybind(e, KEYBINDS.TOGGLE_MODE)) {
         if (!isTypingInInput()) {
           e.preventDefault();

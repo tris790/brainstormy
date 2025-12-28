@@ -111,8 +111,15 @@ export const KEYBINDS = {
   },
   TOGGLE_MODE: {
     key: 'Tab',
-    description: 'Toggle mode',
+    shift: false,
+    description: 'Toggle manual mode',
     displayText: 'Tab',
+  },
+  SWITCH_TO_AUTO: {
+    key: 'Tab',
+    shift: true,
+    description: 'Switch to auto mode',
+    displayText: 'Shift+Tab',
   },
   ESCAPE: {
     key: 'Escape',

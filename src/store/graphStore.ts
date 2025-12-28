@@ -44,6 +44,7 @@ interface GraphStore {
     editingNodeId: string | null;
     inputBarFocusFn: (() => void) | null;
     inputBarToggleModeFn: (() => void) | null;
+    inputBarAutoModeFn: (() => void) | null;
     fitViewFn: (() => void) | null;
 
     // History state
@@ -67,6 +68,8 @@ interface GraphStore {
     focusInputBar: () => void;
     setInputBarToggleModeFn: (fn: (() => void) | null) => void;
     toggleInputBarMode: () => void;
+    setInputBarAutoModeFn: (fn: (() => void) | null) => void;
+    switchToAutoMode: () => void;
     setFitViewFn: (fn: (() => void) | null) => void;
     centerOnRootAndFocus: () => void;
 
@@ -78,8 +81,8 @@ interface GraphStore {
     canRedo: () => boolean;
 
     // Graph operations
-    addNode: (text: string, parentId?: string) => Promise<void>;
-    addNodeToSelected: (text: string) => Promise<void>;
+    addNode: (text: string, parentId?: string, selectNewNode?: boolean) => Promise<void>;
+    addNodeToSelected: (text: string, selectNewNode?: boolean) => Promise<void>;
     deleteNode: (nodeId: string) => void;
     updateNodeLabel: (nodeId: string, label: string) => void;
     layoutGraph: () => Promise<void>;
@@ -127,6 +130,7 @@ export const useGraphStore = create<GraphStore>()(
             editingNodeId: null,
             inputBarFocusFn: null,
             inputBarToggleModeFn: null,
+            inputBarAutoModeFn: null,
             fitViewFn: null,
 
             // History state - initialized with initial state
@@ -179,6 +183,13 @@ export const useGraphStore = create<GraphStore>()(
                 const { inputBarToggleModeFn } = get();
                 if (inputBarToggleModeFn) {
                     inputBarToggleModeFn();
+                }
+            },
+            setInputBarAutoModeFn: (fn) => set({ inputBarAutoModeFn: fn }),
+            switchToAutoMode: () => {
+                const { inputBarAutoModeFn } = get();
+                if (inputBarAutoModeFn) {
+                    inputBarAutoModeFn();
                 }
             },
             setFitViewFn: (fn) => set({ fitViewFn: fn }),
@@ -271,8 +282,8 @@ export const useGraphStore = create<GraphStore>()(
             },
 
             // Add node with semantic clustering
-            addNode: async (text: string, forceParentId?: string) => {
-                const { nodes, edges, colorIndex } = get();
+            addNode: async (text: string, parentId?: string, selectNewNode: boolean = true) => {
+                const { nodes, edges, colorIndex, selectedNodeId } = get();
                 set({ isProcessing: true });
 
                 try {
@@ -284,10 +295,10 @@ export const useGraphStore = create<GraphStore>()(
                     let nodeColor = "#636ef1";
                     let nodeTopic = "General";
 
-                    if (false || forceParentId) {
+                    if (false || parentId) {
                         // If parent is specified, use it directly
                         parentNode =
-                            nodes.find((n) => n.id === forceParentId) || null;
+                            nodes.find((n) => n.id === parentId) || null;
                         if (parentNode) {
                             nodeColor = parentNode.data.color || nodeColor;
                             nodeTopic = parentNode.data.topic || nodeTopic;
@@ -357,7 +368,7 @@ export const useGraphStore = create<GraphStore>()(
                     set({
                         nodes: layouted.nodes,
                         edges: layouted.edges,
-                        selectedNodeId: newNodeId,
+                        selectedNodeId: selectNewNode ? newNodeId : selectedNodeId,
                         isProcessing: false,
                     });
 
@@ -373,9 +384,10 @@ export const useGraphStore = create<GraphStore>()(
             },
 
             // Add node to currently selected node
-            addNodeToSelected: async (text: string) => {
+            // Add node to currently selected node
+            addNodeToSelected: async (text: string, selectNewNode: boolean = true) => {
                 const { selectedNodeId, addNode } = get();
-                await addNode(text, selectedNodeId || undefined);
+                await addNode(text, selectedNodeId || undefined, selectNewNode);
             },
 
             // Delete node and its descendants
